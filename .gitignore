@@ -1,0 +1,15 @@
+# Source material and working files (not part of the website)
+building vedio/
+ref vedio/
+project image/
+tools/
+.claude/
+
+# Source clips the site no longer references
+videos/sunset.mp4
+videos/timelapse.mp4
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
