@@ -79,10 +79,21 @@
       heroVideo.addEventListener('canplay', r, { once: true });
       setTimeout(r, 3200);
     });
+    // greeting for the visitor's time of day; returning visitors are welcomed back
+    const h = new Date().getHours();
+    const part = h >= 5 && h < 12 ? 'Good morning' : h >= 12 && h < 17 ? 'Good afternoon' : 'Good evening';
+    let returning = false;
+    try { returning = localStorage.getItem('arsh-visited') === '1'; localStorage.setItem('arsh-visited', '1'); } catch (e) { /* storage blocked: treat as first visit */ }
+    $('.intro__time').textContent = part + '.';
+    $('.intro__hello').innerHTML = (returning ? 'Welcome back to ' : 'Welcome to ') + '<em>ARSH Construction.</em>';
+    $('.hero__greet').textContent = part;
+
     const draw = gsap.timeline()
-      .to('.intro .bp path', { strokeDashoffset: 0, duration: 1.1, stagger: .09, ease: 'power2.inOut' }, .15)
-      .to('.intro .bp-text text', { opacity: 1, duration: .8, stagger: .1 }, .9)
-      .to(o, { v: 100, duration: 2.3, ease: 'power1.inOut', onUpdate: pad }, .15)
+      .to('.intro__time', { opacity: 1, filter: 'blur(0px)', duration: 1.2, ease: 'power3.out' }, 0)
+      .fromTo('.intro__hello', { y: 16 }, { opacity: 1, y: 0, duration: 1, ease: 'expo.out' }, .45)
+      .to('.intro .bp path', { strokeDashoffset: 0, duration: 1.1, stagger: .09, ease: 'power2.inOut' }, .7)
+      .to('.intro .bp-text text', { opacity: 1, duration: .8, stagger: .1 }, 1.45)
+      .to(o, { v: 100, duration: 2.6, ease: 'power1.inOut', onUpdate: pad }, .2)
       .add(() => $('.intro').classList.add('is-lit'));
 
     Promise.all([ready, draw.then()]).then(() => {

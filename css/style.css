@@ -107,7 +107,12 @@ em { font-style: italic; color: var(--gold-2); }
   background-image: linear-gradient(rgba(226, 166, 74, .08) 1px, transparent 1px), linear-gradient(90deg, rgba(226, 166, 74, .08) 1px, transparent 1px);
   background-size: 52px 52px; -webkit-mask-image: radial-gradient(ellipse at 50% 55%, #000 25%, transparent 75%); mask-image: radial-gradient(ellipse at 50% 55%, #000 25%, transparent 75%);
 }
-.intro__plan { position: absolute; inset: 0; display: grid; place-items: center; padding: 14vh 8vw; }
+.intro__plan { position: absolute; inset: 0; display: grid; place-items: center; padding: 30vh 10vw 10vh; }
+/* greeting: a time-of-day welcome, shown before the blueprint draws */
+.intro__greet { position: absolute; left: 0; right: 0; top: 11vh; z-index: 1; text-align: center; padding: 0 var(--gutter); }
+.intro__time { display: block; font-family: var(--serif); font-style: italic; font-size: clamp(44px, 5.6vw, 88px); line-height: 1.05; color: var(--gold-2); opacity: 0; filter: blur(10px); }
+.intro__hello { margin-top: 6px; font-family: var(--serif); font-size: clamp(20px, 1.9vw, 30px); color: var(--ink); opacity: 0; }
+.intro__hello em { color: var(--ink); font-style: normal; }
 .intro__plan svg { width: 100%; max-width: 1000px; height: auto; overflow: visible; }
 .intro__plan .bp { filter: drop-shadow(0 0 0 rgba(242, 210, 154, 0)); transition: filter .8s; }
 .intro.is-lit .bp { filter: drop-shadow(0 0 6px rgba(242, 210, 154, .75)); }
@@ -120,7 +125,7 @@ em { font-style: italic; color: var(--gold-2); }
 .intro__bottom { bottom: 28px; align-items: flex-end; }
 .intro__brand { font-size: 18px; font-weight: 600; letter-spacing: .34em; color: var(--ink); }
 .intro__count b { font-family: var(--serif); font-weight: 400; font-size: 56px; letter-spacing: 0; color: var(--ink); line-height: .8; }
-@media (max-width: 560px) { .intro__top span:last-child { display: none; } .intro__plan { padding: 20vh 4vw; } }
+@media (max-width: 560px) { .intro__top span:last-child { display: none; } .intro__plan { padding: 36vh 4vw 14vh; } .intro__greet { top: 14vh; } }
 
 /* watermark patch: a soft blur pinned over the bottom-right corner mark of the AI films */
 .wm-patch {
@@ -448,3 +453,5 @@ em { font-style: italic; color: var(--gold-2); }
 .quotes__dots { margin-top: 28px; }
 .filmbar__labels button { padding: 12px 0; }
 .filmbar__labels { margin-bottom: 0; }
+
+.hero__greet { color: var(--gold); }
